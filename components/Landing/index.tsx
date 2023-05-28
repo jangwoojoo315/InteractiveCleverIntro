@@ -1,6 +1,8 @@
-import styled, { keyframes } from "styled-components";
+import styled from "@emotion/styled";
+import { keyframes } from "@emotion/react";
 import { useState } from "react";
-
+import { useRouter } from "next/navigation";
+import Intro from "../Intro";
 const FadeOutToLeft = keyframes`
 from{
   transform:translateX(0)
@@ -19,7 +21,8 @@ to{
 }
 `;
 
-const TriangleBackground = styled.div<{ active: boolean }>`
+//shouldforwardprops
+const TriangleBackground = styled.div<{ isActive: boolean }>`
   position: absolute;
   top: 0;
   right: 0;
@@ -27,11 +30,11 @@ const TriangleBackground = styled.div<{ active: boolean }>`
   height: 0;
   border-top: 100vh solid #0a2a0a;
   border-left: 60vw solid transparent;
-  animation: ${(props) => (props.active ? FadeOutToRight : "")} 3s;
+  animation: ${(props) => (props.isActive ? FadeOutToRight : "")} 1s;
   animation-fill-mode: forwards;
 `;
 
-const TrapezoidBackground = styled.div<{ active: boolean }>`
+const TrapezoidBackground = styled.div<{ isActive: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -39,7 +42,7 @@ const TrapezoidBackground = styled.div<{ active: boolean }>`
   border-right: 60vw solid transparent;
   height: 0;
   width: 40vw;
-  animation: ${(props) => (props.active ? FadeOutToLeft : "")} 3s;
+  animation: ${(props) => (props.isActive ? FadeOutToLeft : "")} 1s;
   animation-fill-mode: forwards;
 `;
 
@@ -76,34 +79,41 @@ const StartButton = styled.button`
 
 const Landing = () => {
   const [active, setActive] = useState(false);
+  const [isLanding, setIsLanding] = useState(true);
 
   return (
-    <div
-      style={{ backgroundColor: "lightGray", width: "100vw", height: "100vh" }}
-    >
-      <TriangleBackground
-        active={active}
-        onAnimationEnd={() => {
-          console.log("anmaiton is End!!!");
-        }}
-      />
-      <TrapezoidBackground active={active}>
-        <ContentContainer>
-          <TitleContainer>Easy & Convenient patient management</TitleContainer>
-          <DescriptionContainer>
-            Patient menu provides all patient-related information such as
-            Patient information, Schedule List, Medical alerts, Introduction &
-            Family, Chart, Payment, Document and Files.​
-          </DescriptionContainer>
-          <StartButton
-            onClick={() => {
-              setActive(true);
+    <div style={{ width: "100vw", height: "100vh" }}>
+      {isLanding ? (
+        <>
+          <TriangleBackground
+            isActive={active}
+            onAnimationEnd={() => {
+              setIsLanding(false);
             }}
-          >
-            Get Started
-          </StartButton>
-        </ContentContainer>
-      </TrapezoidBackground>
+          />
+          <TrapezoidBackground isActive={active}>
+            <ContentContainer>
+              <TitleContainer>
+                Easy & Convenient patient management
+              </TitleContainer>
+              <DescriptionContainer>
+                Patient menu provides all patient-related information such as
+                Patient information, Schedule List, Medical alerts, Introduction
+                & Family, Chart, Payment, Document and Files.​
+              </DescriptionContainer>
+              <StartButton
+                onClick={() => {
+                  setActive(true);
+                }}
+              >
+                Get Started
+              </StartButton>
+            </ContentContainer>
+          </TrapezoidBackground>
+        </>
+      ) : (
+        <Intro></Intro>
+      )}
     </div>
   );
 };
