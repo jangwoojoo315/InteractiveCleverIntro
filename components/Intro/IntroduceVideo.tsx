@@ -10,7 +10,7 @@ const VideoWrapper = styled.div`
 const IntroduceVideo = () => {
   return (
     <VideoWrapper>
-      <video autoPlay loop muted>
+      <video autoPlay loop muted width={"100%"}>
         <source src="videos/clever-introduce.mp4" type="video/mp4" />
       </video>
     </VideoWrapper>
