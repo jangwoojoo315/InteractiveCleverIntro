@@ -94,9 +94,9 @@ const ItemContainer = styled("div")<{ focusIndex: number; index: number }>(
 const NextButton = styled("button")<{ focusIndex: number }>(
   ({ focusIndex }) => {
     return {
-      fontSize: 20,
+      fontSize: 35,
       position: "absolute",
-      top: `calc(50% - 130px)`,
+      top: `calc(50% - 145px)`,
       display: focusIndex === 2 ? "none" : "block",
       backgroundColor: "transparent",
       border: "none",
@@ -109,9 +109,9 @@ const NextButton = styled("button")<{ focusIndex: number }>(
 const PreviousButton = styled("button")<{ focusIndex: number }>(
   ({ focusIndex }) => {
     return {
-      fontSize: 20,
+      fontSize: 35,
       position: "absolute",
-      top: `calc(50% + 130px)`,
+      top: `calc(50% + 115px)`,
       display: focusIndex === 0 ? "none" : "block",
       backgroundColor: "transparent",
       border: "none",

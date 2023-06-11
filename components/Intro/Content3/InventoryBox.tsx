@@ -61,7 +61,6 @@ const InventoryBox = (props: InventoryBoxProps) => {
     opacity: 0,
   });
   useEffect(() => {
-    console.log(scrollPosition);
     if (scrollPosition > 0) {
       setAnimationValue({ xPosition: 250, opacity: 0 });
       return;
