@@ -59,7 +59,7 @@ const getTopPixel = (focusIndex: number, index: number) => {
     return 0;
   }
 
-  //index===0
+  //index===0 or 1
   if (index === 0 || index === 2) {
     const diffIndex = focusIndex - index;
     return -250 * diffIndex;
@@ -77,7 +77,7 @@ const getTopPixel = (focusIndex: number, index: number) => {
   }
 };
 
-const ItemContainer = styled("div")<{ focusIndex: number; index: number }>(
+const ItemContainer = styled.div<{ focusIndex: number; index: number }>(
   ({ focusIndex, index }) => {
     return {
       display: "flex",
@@ -91,22 +91,20 @@ const ItemContainer = styled("div")<{ focusIndex: number; index: number }>(
   }
 );
 
-const NextButton = styled("button")<{ focusIndex: number }>(
-  ({ focusIndex }) => {
-    return {
-      fontSize: 35,
-      position: "absolute",
-      top: `calc(50% - 145px)`,
-      display: focusIndex === 2 ? "none" : "block",
-      backgroundColor: "transparent",
-      border: "none",
-      transform: "rotate(-90deg)",
-      cursor: "pointer",
-    };
-  }
-);
+const NextButton = styled.button<{ focusIndex: number }>(({ focusIndex }) => {
+  return {
+    fontSize: 35,
+    position: "absolute",
+    top: `calc(50% - 145px)`,
+    display: focusIndex === 2 ? "none" : "block",
+    backgroundColor: "transparent",
+    border: "none",
+    transform: "rotate(-90deg)",
+    cursor: "pointer",
+  };
+});
 
-const PreviousButton = styled("button")<{ focusIndex: number }>(
+const PreviousButton = styled.button<{ focusIndex: number }>(
   ({ focusIndex }) => {
     return {
       fontSize: 35,
@@ -121,17 +119,15 @@ const PreviousButton = styled("button")<{ focusIndex: number }>(
   }
 );
 
-const CircleContainer = styled("div")<{ focusIndex: number }>(
-  ({ focusIndex }) => {
-    return {
-      position: "absolute",
-      top: "calc(50% - 100px)",
-      right: -100,
-      transform: `rotate(${focusIndex * -45}deg)`,
-      transition: "transform 1s linear",
-    };
-  }
-);
+const CircleContainer = styled.div<{ focusIndex: number }>(({ focusIndex }) => {
+  return {
+    position: "absolute",
+    top: "calc(50% - 100px)",
+    right: -100,
+    transform: `rotate(${focusIndex * -45}deg)`,
+    transition: "transform 1s linear",
+  };
+});
 
 const Content2 = () => {
   const [focusIndex, setFocusIndex] = useState(0);

@@ -79,7 +79,7 @@ const Content3 = () => {
 
   const yScrollEvent = () => {
     if (!scrollRef.current) return;
-    const scroll = scrollRef.current.getBoundingClientRect();
+    const scroll = scrollRef.current.getBoundingClientRect(); //뷰포트를 기준으로 값 제공
     setScrollPosition(scroll.top);
   };
 
