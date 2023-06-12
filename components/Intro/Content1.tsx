@@ -6,9 +6,11 @@ import { useEffect } from "react";
 
 const fadeInLeftToRight = keyframes`
 from {
+  opacity:0;
   transform:translateX(-500px);
 }
 to{
+  opacity:1;
   transform:translateX(0);
 }
 
@@ -24,6 +26,7 @@ const Content1Wrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div<{ inView: boolean }>`
+  opacity: 0;
   animation: ${(props) => (props.inView ? fadeInLeftToRight : "")} 1s;
   animation-fill-mode: forwards;
 `;
@@ -48,7 +51,7 @@ const Description = styled.span`
 
 const Content1 = () => {
   const { ref, inView } = useInView({
-    threshold: 0,
+    threshold: 0.3,
   });
 
   return (
