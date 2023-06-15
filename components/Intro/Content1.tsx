@@ -51,18 +51,17 @@ const Description = styled.span`
 
 const Content1 = () => {
   const { ref, inView } = useInView({
-    threshold: 0.3,
+    threshold: 0.5,
   });
 
   return (
-    <Content1Wrapper>
+    <Content1Wrapper ref={ref}>
       <ImageWrapper inView={inView}>
         <Image
           src={"/content1/computer.png"}
           width={400}
           height={600}
           alt={"computer"}
-          ref={ref}
         />
       </ImageWrapper>
       <TextWrapper>
