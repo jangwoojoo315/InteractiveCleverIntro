@@ -6,7 +6,7 @@ interface ItemBoxProps {
   title: string;
   description: string;
 }
-
+//https://bennettfeely.com/clippy/ polygon 쉽게만드는 사이트
 const WaveAnimate = keyframes`
 0%,
 100% {
