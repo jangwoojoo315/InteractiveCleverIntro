@@ -21,7 +21,7 @@ to{
 }
 `;
 
-//shouldforwardprops
+//https://fromnowwon.tistory.com/entry/css-triangle-bubble 도형그리기
 const TriangleBackground = styled.div<{ isActive: boolean }>`
   position: absolute;
   top: 0;
@@ -33,23 +33,17 @@ const TriangleBackground = styled.div<{ isActive: boolean }>`
   animation: ${(props) => (props.isActive ? FadeOutToRight : "")} 1s;
   animation-fill-mode: forwards;
 `;
-
-const TrapezoidBackground = styled.div<{ isActive: boolean }>`
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-bottom: 100vh solid transparent;
-  border-right: 60vw solid transparent;
-  height: 0;
-  width: 40vw;
+const ContentContainerWrapper = styled.div<{ isActive: boolean }>`
+  display: flex;
+  height: 100%;
+  padding-left: 13vw;
+  justify-content: flex-start;
+  align-items: center;
   animation: ${(props) => (props.isActive ? FadeOutToLeft : "")} 1s;
   animation-fill-mode: forwards;
 `;
 
 const ContentContainer = styled.div`
-  position: absolute;
-  top: calc(50vh - 188px);
-  left: 15vw;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -91,7 +85,7 @@ const Landing = () => {
               setIsLanding(false);
             }}
           />
-          <TrapezoidBackground isActive={active}>
+          <ContentContainerWrapper isActive={active}>
             <ContentContainer>
               <TitleContainer>
                 Easy & Convenient patient management
@@ -109,7 +103,7 @@ const Landing = () => {
                 Get Started
               </StartButton>
             </ContentContainer>
-          </TrapezoidBackground>
+          </ContentContainerWrapper>
         </>
       ) : (
         <Intro></Intro>
